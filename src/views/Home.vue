@@ -1,4 +1,5 @@
 <template>
+
 <v-container grid-list-xs12>
     <v-row>
       <v-col cols="12">
@@ -10,7 +11,7 @@
         >
           <v-card
     class="mx-auto mb-12"
-    max-width="400"
+    max-width="320"
   >  
     <v-img
       class="white--text"
@@ -38,8 +39,8 @@
     </v-card-actions>
   </v-card> 
   <v-card
-    class="mx-auto mb-12"
-    max-width="400"
+    class="mx-auto my-12"
+    max-width="320"
   >  
     <v-img
       class="white--text"
@@ -75,7 +76,7 @@
           :absolute="absolute"
           :value="overlay"
         >
-        <v-form>
+        <v-form @submit.prevent="enterToTest">
       <v-row>
         <v-text-field
           name="name"
@@ -83,7 +84,7 @@
           v-model="verPassword"
         ></v-text-field>
       </v-row>
-  </v-form>
+      </v-form>
           <v-btn
             color=" deep-purple accent-4 mx-4"
             rounded
@@ -96,7 +97,7 @@
             color=" deep-purple accent-4 mx-4"
             rounded
             dark
-            @click="enterToTest()"
+            type="submit"
           >
             Testni boshlash
           </v-btn>
@@ -106,6 +107,7 @@
 </template>
 
 <script>
+import Timer from '../components/Timer'
 import { log } from 'util'
   export default {
     data () {
@@ -117,6 +119,7 @@ import { log } from 'util'
         overlay: false
       }
     },
+    components: {Timer},
     beforeCreate() {
       
     },
@@ -133,6 +136,8 @@ import { log } from 'util'
         this.$router.push('/signIn')
         } else {
           this.overlay = !this.overlay
+          this.$store.commit('setStart', true)
+          // this.$router.push('./start-test')
         }
       }
     }

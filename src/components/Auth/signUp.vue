@@ -26,7 +26,6 @@
             v-model="password"
           ></v-text-field>
           <span class="caption grey--text text--darken-1">
-            Enter your second name
           </span>
         </v-card-text>
       </v-window-item>

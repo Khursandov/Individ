@@ -24,6 +24,11 @@ export default new Router({
       component: () => import('./components/Auth/signUp')
     },
     {
+      path: '/yani',
+      name: 'Yani',
+      component: () => import('./views/Yani')
+    },
+    {
       path: '/account',
       name: 'account',
       component: () => import('./views/Account')

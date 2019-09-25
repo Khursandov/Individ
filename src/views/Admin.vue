@@ -60,6 +60,8 @@
               <v-card-actions>
                 <v-btn color="deep-purple accent-4" outlined @click="Start">Kod aktivatsiya</v-btn>
                 <v-btn color="deep-purple accent-4" outlined @click="deletePassword">Kodni O'chirish</v-btn>
+              </v-card-actions>
+              <v-card-actions>
                 <v-btn color="deep-purple accent-4" outlined @click="StartTest">Boshlash</v-btn>
               </v-card-actions>
           </v-container>
@@ -70,7 +72,7 @@
       :value="'tab-' + 3">
         <v-data-table :headers="headers" :items="studentResults" class="elevation-1">
           <template v-slot:item.calories="{ item }">
-            <v-chip :color="getColor(item.calories)" dark>{{20- item.calories }}</v-chip>
+            <v-chip :color="getColor(item.calories)" dark>{{  30 - item.calories }}</v-chip>
           </template>
         </v-data-table>
       </v-tab-item>
@@ -158,9 +160,11 @@ import Start from '../components/admin/startTest'
       this.students = this.$store.state.students
       this.$store.dispatch('getTopics')
       this.topics = this.$store.state.topics
+      console.log('topics', this.topics)
       this.$store.dispatch('getResults')
       this.studentResults = this.$store.state.adminResults
-      console.log(this.studentResults)
+      this.$store.dispatch('getPassword')
+      console.log(this.$store.state.currentDatas)
     }
   }
 </script>

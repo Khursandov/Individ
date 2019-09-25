@@ -19,7 +19,10 @@ export default new Vuex.Store({
     admin: false,
     currentTopic: '',
     correctAns: 0,
-    adminResults: []
+    adminResults: [],
+    start: false,
+    end: false,
+    afterTest: []
   },
   getters: {
     User({state}) {
@@ -27,6 +30,13 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setStart({state}, pauload) {
+      console.log(pauload)
+      this.state.start = pauload
+    },
+    setEnd({state}, payload) {
+      this.state.end = payload
+    },
     setStudents({state}, payload) {
       this.state.students.push(payload);
     },
@@ -58,6 +68,9 @@ export default new Vuex.Store({
     },
     setAdminResults({state}, payload) {
       this.state.adminResults.push(payload)
+    },
+    setAfterTest({state}, payload) {
+      this.state.afterTest.push(payload)
     }
   },
   actions: {
@@ -93,7 +106,7 @@ export default new Vuex.Store({
       })
     },
     signIn({state,commit}, payload) {
-      if(payload.name === 'admin' && payload.password === '123456') {
+      if(payload.name === 'admin' && payload.password === '112233445566') {
         commit('setAdmin', true)
         commit('setUser', payload)
         router.push('/')
@@ -134,18 +147,13 @@ export default new Vuex.Store({
       db.collection('topics').get().then( querySnapshot => {
         querySnapshot.forEach( doc => {
           const data = {
-            'topicId': doc.data().topicId,
-            'text': doc.data().topicName
+            'text': doc.data().topicId,
+            'topicId': doc.data().topicName
           }
           commit('setTopics', data)
         })
       })
     },
-    // getCurrentTopic({commit}) {
-    //   db.collection('passwordTest').get().then( querySnapshot => {
-    //     console.log(querySnapshot)
-    //   })
-    // },
     getPassword({commit}) {
       db.collection('passwordTest').get().then( querySnapshot => {
         querySnapshot.forEach( doc => {
@@ -158,8 +166,8 @@ export default new Vuex.Store({
         })
       })
     },
-    getTests({commit}) {
-      db.collection('tests').get().then( querySnapshot => {
+    getTests({ commit, state }) {
+      db.collection('tests').where('topicId', '==', this.state.currentDatas.current).get().then( querySnapshot => {
         querySnapshot.forEach( doc => {
           let test = {
             'id': doc.id,
@@ -169,6 +177,7 @@ export default new Vuex.Store({
             'b': doc.data().b,
             'c': doc.data().c,
             'd': doc.data().d,
+            'e': doc.data().e,
             'ans': doc.data().ans,
           }
           commit('setTests', test)

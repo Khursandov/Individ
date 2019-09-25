@@ -2,19 +2,18 @@
   <div>
     <v-app-bar
       color="deep-purple accent-4"
-      dense
+      width="100%"
       dark
     >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Individ</v-toolbar-title>
-      <div class="flex-grow-1"></div>
-      <div class="flex-grow-1"></div>
+      <!-- <v-toolbar-title>Individ</v-toolbar-title> -->
 
-      <div class="flex-grow-1"><span>00:00</span></div>
+      <div class="flex-grow-1"></div>
+      <Timer />
       <span>{{ this.$store.state.name }}</span>
-      <v-btn dark outlined rounded to="/signUp" class="mx-2" v-if="!this.$store.state.name">Sign up</v-btn>
-      <v-btn dark outlined rounded to="/signIn" class="mx-2" v-if="!this.$store.state.name">Sign in</v-btn>
+      <v-btn dark outlined rounded to="/signUp" class="mx-2" v-if="!this.$store.state.name">Ro'yxatdan o'tish</v-btn>
+      <v-btn dark outlined rounded to="/signIn" class="mx-2" v-if="!this.$store.state.name">Kirish</v-btn>
       <v-menu
         left
         bottom
@@ -29,7 +28,7 @@
           <v-list-item
             @click="logOut"
           >
-            <v-list-item-title>Log out  </v-list-item-title>
+            <v-list-item-title>Tizimdan chiqish</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -37,10 +36,12 @@
   </div>
 </template>
 <script>
+import Timer from './Timer'
 export default {
   data() {
     return {}
   },
+  components: {Timer},
   methods: {
     logOut() {
       let payload = {
