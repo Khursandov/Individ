@@ -9,7 +9,8 @@
             <v-card :color="active ? 'primary' : ''" class="d-flex align-center" height="auto" width="auto"
               @click="toggle" fab>
               <span class="flex-grow-1 text-center py-2">
-                Sizning javobingiz --  {{ test.opt }}
+                Sizning javobingiz :
+                <vue-mathjax :formula="test.opt"></vue-mathjax>
               </span>
             </v-card>
             </div>
@@ -21,7 +22,8 @@
             <v-card :color="active ? 'primary' : ''" class="d-flex align-center" height="auto" width="auto"
               @click="toggle" fab>
               <span class="flex-grow-1 text-center py-2">
-                Tori javob -- {{ test.ans }}
+                Tog'ri javob:
+                <vue-mathjax :formula="test.ans"></vue-mathjax>
               </span>
             </v-card>
             </div>

@@ -201,6 +201,7 @@ export default new Vuex.Store({
           let data = {
             'name': doc.data().name,
             'calories': doc.data().result,
+            'fat': doc.data().result
           }
           commit('setAdminResults', data)
         })

@@ -98,6 +98,7 @@
             rounded
             dark
             type="submit"
+            @click="enterToTest"
           >
             Testni boshlash
           </v-btn>
@@ -127,6 +128,7 @@ import { log } from 'util'
       enterToTest() {
         this.$store.dispatch('getPassword')
         let data = this.$store.state.currentDatas
+        console.log('current',data)
         if ( data.password == this.verPassword ) {
           this.$router.push('/start-test')
         }

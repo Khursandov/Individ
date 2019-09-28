@@ -97,6 +97,7 @@ import Start from '../components/admin/startTest'
         grow: true,
         password: '',
         topics: '',
+        data: '',
         headers: [
           {
             text: 'Ismi',
@@ -159,11 +160,14 @@ import Start from '../components/admin/startTest'
     created() {
       this.students = this.$store.state.students
       this.$store.dispatch('getTopics')
+      this.$store.dispatch('getPassword')
+      this.data = this.$store.state.currentDatas
+      this.password = this.data.password
       this.topics = this.$store.state.topics
       console.log('topics', this.topics)
       this.$store.dispatch('getResults')
+
       this.studentResults = this.$store.state.adminResults
-      this.$store.dispatch('getPassword')
       console.log(this.$store.state.currentDatas)
     }
   }

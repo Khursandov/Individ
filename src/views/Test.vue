@@ -16,7 +16,7 @@
               @click="toggle" fab
               >
               <span class="flex-grow-1 text-center py-2">
-                {{ test.a }}
+                <vue-mathjax :formula="test.a"></vue-mathjax>
               </span>
             </v-card>
             </div>
@@ -28,7 +28,8 @@
             <v-card :color="active ? 'primary' : ''" class="d-flex align-center" height="auto" width="auto"
               @click="toggle" fab>
               <span class="flex-grow-1 text-center py-2">
-                {{ test.b }}
+                <!-- {{ test.b }} -->
+                <vue-mathjax :formula="test.b"></vue-mathjax>
               </span>
             </v-card>
             </div>
@@ -40,7 +41,8 @@
             <v-card :color="active ? 'primary' : ''" class="d-flex align-center" height="auto" width="auto"
               @click="toggle" fab>
               <span class="flex-grow-1 text-center py-2">
-                {{ test.c }}
+                <!-- {{ test.c }} -->
+                <vue-mathjax :formula="test.c"></vue-mathjax>
               </span>
             </v-card>
             </div>
@@ -52,7 +54,8 @@
             <v-card :color="active ? 'primary' : ''" class="d-flex align-center" height="auto" width="auto"
               @click="toggle" fab>
               <span class="flex-grow-1 text-center py-2 ">
-                {{ test.d }}
+                <!-- {{ test.d }} -->
+                <vue-mathjax :formula="test.d"></vue-mathjax>
               </span>
             </v-card>
             </div>
@@ -64,7 +67,8 @@
             <v-card :color="active ? 'primary' : ''" class="d-flex align-center" height="auto" width="auto"
               @click="toggle" fab>
               <span class="flex-grow-1 text-center py-2 ">
-                {{ test.e }}
+                <!-- {{ test.e }} -->
+                <vue-mathjax :formula="test.e"></vue-mathjax>
               </span>
             </v-card>
             </div>
